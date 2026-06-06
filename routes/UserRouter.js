@@ -16,7 +16,7 @@ router.get("/:id", async (request, response) => {
   try {
     const user = await User.findById(id);
     if (!user) {
-      return response.status(400).send("User not found");
+      return response.status(400).send("Không tìm thấy người dùng");
     }
     response.json({
       _id: user._id,
@@ -27,7 +27,7 @@ router.get("/:id", async (request, response) => {
       occupation: user.occupation,
     });
   } catch (err) {
-    response.status(400).send("Invalid ID");
+    response.status(400).send("ID không hợp lệ");
   }
 });
 

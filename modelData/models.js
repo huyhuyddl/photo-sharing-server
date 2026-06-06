@@ -58,6 +58,8 @@ const im = {
   location: "Austin, TX",
   description: "Should've stayed in the car.",
   occupation: "Mathematician",
+  login_name: "ian",
+  password: "123",
 };
 const er = {
   _id: "57231f1a30e4351f4e9f4bd8",
@@ -66,6 +68,8 @@ const er = {
   location: "Nostromo",
   description: "Lvl 6 rating. Pilot.",
   occupation: "Warrant Officer",
+  login_name: "ellen",
+  password: "123",
 };
 const pt = {
   _id: "57231f1a30e4351f4e9f4bd9",
@@ -78,6 +82,8 @@ const pt = {
     "until the stars are all alight... Mist and shadow, cloud and shade, " +
     "all shall fade... all... shall... fade... ",
   occupation: "Thain",
+  login_name: "pippin",
+  password: "123",
 };
 const rk = {
   _id: "57231f1a30e4351f4e9f4bda",
@@ -86,6 +92,8 @@ const rk = {
   location: "D'Qar",
   description: "Excited to be here!",
   occupation: "Rebel",
+  login_name: "rey",
+  password: "123",
 };
 const al = {
   _id: "57231f1a30e4351f4e9f4bdb",
@@ -94,6 +102,8 @@ const al = {
   location: "Pawnee, IN",
   description: "Witch",
   occupation: "Animal Control",
+  login_name: "april",
+  password: "123",
 };
 const jo = {
   _id: "57231f1a30e4351f4e9f4bdc",
@@ -102,9 +112,21 @@ const jo = {
   location: "Stanford, CA",
   description: "<i>CS142!</i>",
   occupation: "Professor",
+  login_name: "john",
+  password: "123",
+};
+const dh = {
+  _id: "57231f1a30e4351f4e9f4bf7",
+  first_name: "Đức",
+  last_name: "Huy",
+  location: "Vietnam",
+  description: "Photo sharing app developer",
+  occupation: "Developer",
+  login_name: "Đức Huy",
+  password: "123",
 };
 
-const users = [im, er, pt, rk, al, jo];
+const users = [im, er, pt, rk, al, jo, dh];
 
 // Create initial photos.
 const photo1 = {

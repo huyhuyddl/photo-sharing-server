@@ -1,0 +1,2 @@
+server listening on port 3001
+Successfully connected to MongoDB Atlas!

@@ -3,6 +3,18 @@ const Photo = require("../db/photoModel");
 const User = require("../db/userModel");
 const router = express.Router();
 const mongoose = require("mongoose");
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, "..", "uploads"),
+  filename: function (req, file, cb) {
+    const uniqueName = Date.now() + "-" + Math.round(Math.random() * 1e9) + path.extname(file.originalname);
+    cb(null, uniqueName);
+  },
+});
+
+const upload = multer({ storage });
 
 router.get("/photosOfUser/:id", async (request, response) => {
   const userId = request.params.id;
@@ -51,4 +63,31 @@ router.get("/photosOfUser/:id", async (request, response) => {
     response.status(500).send("Lỗi server");
   }
 });
+router.post("/new", upload.single("photo"), async (request, response) => {
+  if (!request.file) {
+    return response.status(400).json({ error: "No file uploaded" });
+  }
+
+  try {
+    const newPhoto = await Photo.create({
+      file_name: request.file.filename,
+      date_time: new Date(),
+      user_id: request.user.userId,
+    });
+
+    const photoObj = newPhoto.toObject();
+
+    response.status(201).json({
+      _id: photoObj._id,
+      file_name: photoObj.file_name,
+      date_time: photoObj.date_time,
+      user_id: photoObj.user_id,
+      comments: [],
+    });
+  } catch (err) {
+    console.log(err);
+    response.status(500).json({ error: "Server error" });
+  }
+});
+
 module.exports = router;

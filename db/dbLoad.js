@@ -25,11 +25,13 @@ async function dbLoad() {
   const mapFakeId2RealId = {};
   for (const user of userModels) {
     userObj = new User({
-      first: user.first_name,
+      first_name: user.first_name,
       last_name: user.last_name,
       location: user.location,
       description: user.description,
       occupation: user.occupation,
+      login_name: user.login_name,
+      password: user.password,
     });
     try {
       await userObj.save();
@@ -93,7 +95,7 @@ async function dbLoad() {
     });
     console.log("SchemaInfo object created with version ", schemaInfo.version);
   } catch (error) {
-    console.error("Error create schemaInfo", reportError);
+      console.error("Error create schemaInfo", error);
   }
   mongoose.disconnect();
 }
